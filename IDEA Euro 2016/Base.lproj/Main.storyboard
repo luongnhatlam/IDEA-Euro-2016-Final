@@ -3,12 +3,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Splash View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="IDEA_Euro_2016" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SplashViewController" customModule="IDEA_Euro_2016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +19,140 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="C0t-ir-ybl">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="SHM-Tc-thL">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SHM-Tc-thL" secondAttribute="height" multiplier="247:218" id="LoI-DA-ruf"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="LoI-DA-ruf"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="LoI-DA-ruf"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAU-aq-eqP">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="tG1-I8-qDH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Danh sách đội">
+                                    <color key="titleColor" red="0.0" green="0.094117647058823528" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tG1-I8-qDH"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="tG1-I8-qDH"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcY-CN-qaz">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.65490196078431373" green="0.0" blue="0.050980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Lịch thi đấu">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tcY-CN-qaz" firstAttribute="height" secondItem="CAU-aq-eqP" secondAttribute="height" id="3bz-Dg-ddY"/>
+                            <constraint firstItem="SHM-Tc-thL" firstAttribute="centerX" secondItem="C0t-ir-ybl" secondAttribute="centerX" id="7DC-UX-obK"/>
+                            <constraint firstItem="C0t-ir-ybl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7oS-eC-Iad">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstItem="tcY-CN-qaz" firstAttribute="width" secondItem="CAU-aq-eqP" secondAttribute="width" id="OgZ-JF-Bod"/>
+                            <constraint firstItem="SHM-Tc-thL" firstAttribute="width" secondItem="C0t-ir-ybl" secondAttribute="width" multiplier="1:2" id="Om4-i8-iUh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C0t-ir-ybl" secondAttribute="bottom" id="QfB-iT-xcT"/>
+                            <constraint firstItem="CAU-aq-eqP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="Rvq-Dm-u13"/>
+                            <constraint firstItem="CAU-aq-eqP" firstAttribute="centerY" secondItem="C0t-ir-ybl" secondAttribute="centerY" id="TUA-zA-aFB">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-30"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="C0t-ir-ybl" secondAttribute="trailing" id="fD2-tV-Uab"/>
+                            <constraint firstItem="tcY-CN-qaz" firstAttribute="centerX" secondItem="CAU-aq-eqP" secondAttribute="centerX" id="hjr-tz-GdH"/>
+                            <constraint firstItem="C0t-ir-ybl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="klW-ch-kiL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CAU-aq-eqP" secondAttribute="trailing" constant="40" id="ma5-om-XKw"/>
+                            <constraint firstItem="CAU-aq-eqP" firstAttribute="top" secondItem="SHM-Tc-thL" secondAttribute="bottom" constant="20" id="qtN-Ry-uii"/>
+                            <constraint firstItem="tcY-CN-qaz" firstAttribute="centerY" secondItem="C0t-ir-ybl" secondAttribute="centerY" id="wuz-x5-1nF">
+                                <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="C0t-ir-ybl"/>
+                                <exclude reference="SHM-Tc-thL"/>
+                                <exclude reference="CAU-aq-eqP"/>
+                                <exclude reference="tcY-CN-qaz"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="7oS-eC-Iad"/>
+                                <exclude reference="fD2-tV-Uab"/>
+                                <exclude reference="klW-ch-kiL"/>
+                                <exclude reference="7DC-UX-obK"/>
+                                <exclude reference="Om4-i8-iUh"/>
+                                <exclude reference="Rvq-Dm-u13"/>
+                                <exclude reference="TUA-zA-aFB"/>
+                                <exclude reference="ma5-om-XKw"/>
+                                <exclude reference="qtN-Ry-uii"/>
+                                <exclude reference="3bz-Dg-ddY"/>
+                                <exclude reference="OgZ-JF-Bod"/>
+                                <exclude reference="hjr-tz-GdH"/>
+                                <exclude reference="wuz-x5-1nF"/>
+                                <exclude reference="QfB-iT-xcT"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="C0t-ir-ybl"/>
+                                <include reference="SHM-Tc-thL"/>
+                                <include reference="CAU-aq-eqP"/>
+                                <include reference="tcY-CN-qaz"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="7oS-eC-Iad"/>
+                                <include reference="fD2-tV-Uab"/>
+                                <include reference="klW-ch-kiL"/>
+                                <include reference="7DC-UX-obK"/>
+                                <include reference="Om4-i8-iUh"/>
+                                <include reference="Rvq-Dm-u13"/>
+                                <include reference="TUA-zA-aFB"/>
+                                <include reference="ma5-om-XKw"/>
+                                <include reference="qtN-Ry-uii"/>
+                                <include reference="3bz-Dg-ddY"/>
+                                <include reference="OgZ-JF-Bod"/>
+                                <include reference="hjr-tz-GdH"/>
+                                <include reference="wuz-x5-1nF"/>
+                                <include reference="QfB-iT-xcT"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="OLDanhSachDoi" destination="CAU-aq-eqP" id="LDM-MZ-rhz"/>
+                        <outlet property="OLLichThiDau" destination="tcY-CN-qaz" id="GWz-6U-yvb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="237" y="342.75"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg.png" width="1242" height="2208"/>
+        <image name="logo.png" width="1000" height="1000"/>
+    </resources>
 </document>
