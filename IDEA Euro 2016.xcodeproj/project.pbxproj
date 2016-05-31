@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9AD47EDDB16123E29E82D72A /* Pods_IDEA_Euro_2016.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2AF8FD859627161CC289464 /* Pods_IDEA_Euro_2016.framework */; };
+		FF44EBB81CFCAA0A0019DEDB /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF44EBB71CFCAA0A0019DEDB /* ScheduleTableViewCell.swift */; };
+		FF44EBBA1CFCAA9C0019DEDB /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF44EBB91CFCAA9C0019DEDB /* ScheduleViewController.swift */; };
+		FF44EBBC1CFCAF8D0019DEDB /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF44EBBB1CFCAF8D0019DEDB /* Match.swift */; };
 		FFBE2AFD1CF6E5AF001BE1C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBE2AFC1CF6E5AF001BE1C2 /* AppDelegate.swift */; };
 		FFBE2B021CF6E5AF001BE1C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBE2B001CF6E5AF001BE1C2 /* Main.storyboard */; };
 		FFBE2B041CF6E5AF001BE1C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBE2B031CF6E5AF001BE1C2 /* Assets.xcassets */; };
@@ -77,6 +80,9 @@
 		1006B649AA531C56F803EA6F /* Pods-IDEA Euro 2016.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDEA Euro 2016.release.xcconfig"; path = "Pods/Target Support Files/Pods-IDEA Euro 2016/Pods-IDEA Euro 2016.release.xcconfig"; sourceTree = "<group>"; };
 		A2AF8FD859627161CC289464 /* Pods_IDEA_Euro_2016.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IDEA_Euro_2016.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46520088895ED5876DC9F97 /* Pods-IDEA Euro 2016.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDEA Euro 2016.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IDEA Euro 2016/Pods-IDEA Euro 2016.debug.xcconfig"; sourceTree = "<group>"; };
+		FF44EBB71CFCAA0A0019DEDB /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		FF44EBB91CFCAA9C0019DEDB /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		FF44EBBB1CFCAF8D0019DEDB /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		FFBE2AF91CF6E5AF001BE1C2 /* IDEA Euro 2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IDEA Euro 2016.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBE2AFC1CF6E5AF001BE1C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFBE2B011CF6E5AF001BE1C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -274,6 +280,7 @@
 			children = (
 				FFC0E9F11CFC3C90003F75D3 /* SplashViewController.swift */,
 				FFC0E9FB1CFC4F94003F75D3 /* TeamsViewController.swift */,
+				FF44EBB91CFCAA9C0019DEDB /* ScheduleViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -282,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				FFC0E9FE1CFC5E85003F75D3 /* TeamsTableViewCell.swift */,
+				FF44EBB71CFCAA0A0019DEDB /* ScheduleTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -290,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				FFC0EA011CFC601F003F75D3 /* Team.swift */,
+				FF44EBBB1CFCAF8D0019DEDB /* Match.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -473,8 +482,11 @@
 			files = (
 				FFC0E9FF1CFC5E85003F75D3 /* TeamsTableViewCell.swift in Sources */,
 				FFBE2AFD1CF6E5AF001BE1C2 /* AppDelegate.swift in Sources */,
+				FF44EBB81CFCAA0A0019DEDB /* ScheduleTableViewCell.swift in Sources */,
+				FF44EBBC1CFCAF8D0019DEDB /* Match.swift in Sources */,
 				FFC0E9FC1CFC4F94003F75D3 /* TeamsViewController.swift in Sources */,
 				FFC0EA021CFC601F003F75D3 /* Team.swift in Sources */,
+				FF44EBBA1CFCAA9C0019DEDB /* ScheduleViewController.swift in Sources */,
 				FFC0E9F21CFC3C90003F75D3 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
