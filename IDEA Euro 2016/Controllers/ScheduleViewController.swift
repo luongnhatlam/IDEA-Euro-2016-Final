@@ -14,6 +14,7 @@ class ScheduleViewController: UIViewController {
     var database:FIRDatabaseReference!
     @IBOutlet weak var tableView: UITableView!
     var dataList:[Match] =  [Match]()
+    var matchList:[[String:[Match]]] = [[String:[Match]]]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,14 +54,46 @@ class ScheduleViewController: UIViewController {
                         }
                     }
                     
+                    print(self.getDataGroupByDate(self.dataList))
+                    
                     dispatch_async(dispatch_get_main_queue(), {
                         self.tableView.reloadData()
                     })
                 }
             }
         })
+        
+        
     }
     
+    func getDataGroupByDate(data:[Match]) -> [String: [Match]] {
+        var result:Dictionary<String,[Match]> = [String: [Match]]()
+        
+        for match in data {
+            let dateStr = convertNSDateToDDMMYYYY(match.date)
+            if let matchesOfDate = result[dateStr] as? AnyObject {
+                
+                var matches = matchesOfDate as! [Match]
+                matches.append(match)
+                result[dateStr] = matches
+                
+            } else {
+                result[dateStr] = [match]
+            }
+        }
+        
+        return result
+    }
+    
+    func convertNSDateToDDMMYYYY(date: NSDate) -> String {
+        let calendar = NSCalendar.currentCalendar()
+        let day = calendar.component(.Day,fromDate: date)
+        let month = calendar.component(.Month,fromDate: date)
+        let year = calendar.component(.Year, fromDate: date)
+        let dayStr = day < 10 ? "0\(day)" : "\(day)"
+        let monthStr = month < 10 ? "0\(month)" : "\(month)"
+        return "\(dayStr)/\(monthStr)/\(year)"
+    }
 
     /*
     // MARK: - Navigation
