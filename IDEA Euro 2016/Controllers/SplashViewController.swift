@@ -23,8 +23,8 @@ class SplashViewController: UIViewController {
     func radiusBorder(){
         OLLichThiDau.layer.cornerRadius = 10
         OLDanhSachDoi.layer.cornerRadius = 10
-        OLLichThiDau.layer.masksToBounds = true
-        OLDanhSachDoi.layer.masksToBounds = true
+        //OLLichThiDau.layer.masksToBounds = true
+        //OLDanhSachDoi.layer.masksToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,8 +34,12 @@ class SplashViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        //self.navigationController?.navigationBarHidden = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
 

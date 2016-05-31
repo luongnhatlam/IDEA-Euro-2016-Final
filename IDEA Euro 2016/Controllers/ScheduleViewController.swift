@@ -16,7 +16,10 @@ class ScheduleViewController: UIViewController {
     var dataList:[Match] =  [Match]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         // Do any additional setup after loading the view.
         self.database = FIRDatabase.database().reference()
         loadData()
