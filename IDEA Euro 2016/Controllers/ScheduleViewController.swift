@@ -50,28 +50,7 @@ class ScheduleViewController: UIViewController {
                                     self.dataList.append(match)
                                 }
                             }
-                            
                         }
-//                        if let teamsData = groupData.1 as? [String:AnyObject] {
-//                            var teamList:[Team] = [Team]()
-//                            for teamData in teamsData {
-//                                var data:[String:AnyObject] = [
-//                                    "name" : teamData.0
-//                                ]
-//                                if let teamInfo = teamData.1 as? [String:AnyObject] {
-//                                    data["point"] = teamInfo["Point"]
-//                                    data["rank"] = teamInfo["Rank"]
-//                                }
-//                                if let team = Team(data: data) {
-//                                    teamList.append(team)
-//                                }
-//                            }
-//                            if teamList.count > 0 {
-//                                let group = [groupData.0:teamList]
-//                                self.dataList.append(group)
-//                            }
-//                            
-//                        }
                     }
                     
                     dispatch_async(dispatch_get_main_queue(), {

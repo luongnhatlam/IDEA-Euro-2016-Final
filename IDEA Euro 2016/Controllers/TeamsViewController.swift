@@ -10,14 +10,14 @@ import UIKit
 import Firebase
 
 class TeamsViewController: UIViewController {
-
+    
     var database:FIRDatabaseReference!
     var dataList:[[String:[Team]]] = [[String:[Team]]]()
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.database = FIRDatabase.database().reference()
         
@@ -30,11 +30,8 @@ class TeamsViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        //self.navigationController?.navigationBar.hidden = true
-        
         loadData()
-//        valueChanged()
-
+        
     }
     
     
@@ -63,7 +60,6 @@ class TeamsViewController: UIViewController {
                         }
                         
                         if teamList.count > 0 {
-                            
                             let groupAndTeam = [ "Bảng \(groupName)" : teamList ]
                             self.dataList.append(groupAndTeam)
                         }
@@ -73,43 +69,11 @@ class TeamsViewController: UIViewController {
                         self.tableView.reloadData()
                     })
                     
-                    
-//                    for groupData in sortList {
-//                        if let teamsData = groupData.1 as? [String:AnyObject] {
-//                            var teamList:[Team] = [Team]()
-//                            
-//                            
-//                            
-//                            for teamData in teamsData {
-//                                var data:[String:AnyObject] = [
-//                                    "name" : teamData.0
-//                                ]
-//                                
-//                                if let teamInfo = teamData.1 as? [String:AnyObject] {
-//                                    data["point"] = teamInfo["Point"]
-//                                    data["rank"] = teamInfo["Rank"]
-//                                }
-//                                if let team = Team(data: data) {
-//                                    teamList.append(team)
-//                                }
-//                            }
-//                            
-//                            if teamList.count > 0 {
-//                                let group = [groupData.0:teamList]
-//                                self.dataList.append(group)
-//                            }
-//                            
-//                        }
-//                    }
-                    
-//                    dispatch_async(dispatch_get_main_queue(), {
-//                        self.tableView.reloadData()
-//                    })
                 }
             }
         })
     }
-
+    
     func valueChanged() {
         self.database.child("Groups").queryOrderedByKey().observeEventType(.ChildChanged,withBlock: { (snap) in
             if snap.value != nil {
@@ -144,25 +108,13 @@ class TeamsViewController: UIViewController {
                 }
             }
         })
-
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension TeamsViewController : UITableViewDataSource {
@@ -172,8 +124,8 @@ extension TeamsViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var row = 0
-        for group in self.dataList[section] {
-            if let teams:[Team] = group.1 {
+        for (_,teamList) in self.dataList[section] {
+            if let teams:[Team] = teamList {
                 row = teams.count
             }
         }
@@ -202,16 +154,6 @@ extension TeamsViewController : UITableViewDataSource {
         return cell
     }
     
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        var header = ""
-//        let groups = self.dataList[section]
-//        for group in groups {
-//            header = group.0
-//        }
-//
-//        return header
-//    }
-    
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
@@ -223,17 +165,18 @@ extension TeamsViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
         let headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 40))
+        let bg = UIImageView(frame: headerView.frame)
+        bg.image = UIImage(named: "board")
+        bg.contentMode = .ScaleAspectFill
+        headerView.addSubview(bg)
         let textLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 200, height: 40 ))
         textLabel.font = UIFont(name: "Avenir Next Heavy", size: 25)
-        textLabel.textColor = UIColor.blueColor()
-        let groups = self.dataList[section]
-        for group in groups {
-            textLabel.text = group.0
+        textLabel.textColor = UIColor.whiteColor()
+        let group = self.dataList[section]
+        for (groupName, _) in group {
+            textLabel.text = groupName
             headerView.addSubview(textLabel)
         }
-        
-        
-        headerView.backgroundColor = UIColor(white: 1, alpha: 0.95)
         return headerView
     }
 }
