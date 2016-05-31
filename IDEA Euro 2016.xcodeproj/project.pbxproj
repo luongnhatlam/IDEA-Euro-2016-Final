@@ -310,12 +310,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFBE2B0B1CF6E5AF001BE1C2 /* Build configuration list for PBXNativeTarget "IDEA Euro 2016" */;
 			buildPhases = (
-				4DA3A225ACA344A323849683 /* Check Pods Manifest.lock */,
+				4DA3A225ACA344A323849683 /* 📦 Check Pods Manifest.lock */,
 				FFBE2AF51CF6E5AF001BE1C2 /* Sources */,
 				FFBE2AF61CF6E5AF001BE1C2 /* Frameworks */,
 				FFBE2AF71CF6E5AF001BE1C2 /* Resources */,
-				504A0770BAE3022B74290538 /* Embed Pods Frameworks */,
-				525ECCE0AD02EC7F38CA628A /* Copy Pods Resources */,
+				504A0770BAE3022B74290538 /* 📦 Embed Pods Frameworks */,
+				525ECCE0AD02EC7F38CA628A /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -428,14 +428,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4DA3A225ACA344A323849683 /* Check Pods Manifest.lock */ = {
+		4DA3A225ACA344A323849683 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,14 +443,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		504A0770BAE3022B74290538 /* Embed Pods Frameworks */ = {
+		504A0770BAE3022B74290538 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,14 +458,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDEA Euro 2016/Pods-IDEA Euro 2016-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		525ECCE0AD02EC7F38CA628A /* Copy Pods Resources */ = {
+		525ECCE0AD02EC7F38CA628A /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
