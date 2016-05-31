@@ -19,20 +19,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="fAq-jH-myw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="fAq-jH-myw">
                                 <rect key="frame" x="150" y="20" width="300" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="FH3-Im-1Y6"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ide.png" translatesAutoresizingMaskIntoConstraints="NO" id="WNF-mJ-OUe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ide" translatesAutoresizingMaskIntoConstraints="NO" id="WNF-mJ-OUe">
                                 <rect key="frame" x="423" y="540" width="157" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="157" id="fjL-k3-LwO"/>
                                     <constraint firstAttribute="height" constant="40" id="nP2-FH-DGb"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mascotte-France-Euro-2016.png" translatesAutoresizingMaskIntoConstraints="NO" id="st6-c4-vQk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mascotte-France-Euro-2016" translatesAutoresizingMaskIntoConstraints="NO" id="st6-c4-vQk">
                                 <rect key="frame" x="150" y="170" width="300" height="300"/>
                             </imageView>
                         </subviews>
@@ -56,8 +56,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Mascotte-France-Euro-2016.png" width="527" height="627"/>
-        <image name="banner.png" width="800" height="400"/>
-        <image name="ide.png" width="392" height="118"/>
+        <image name="Mascotte-France-Euro-2016" width="213" height="254"/>
+        <image name="banner" width="300" height="150"/>
+        <image name="ide" width="161" height="48"/>
     </resources>
 </document>

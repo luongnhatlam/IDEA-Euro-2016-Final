@@ -189,10 +189,10 @@ extension TeamsViewController : UITableViewDataSource {
             
             let team:Team = teamsArr[indexPath.row]
             
-            let banner:UIImage = UIImage(named: "Banner-\(team.name).jpg")!
+            let banner:UIImage = UIImage(named: "Banner-\(team.name)")!
             cell.bannerImageView.image = banner
             
-            let logo:UIImage = UIImage(named: "\(team.name).png")!
+            let logo:UIImage = UIImage(named: "\(team.name)")!
             cell.flagImageView.image = logo
             
             cell.countryLabel.text = team.name

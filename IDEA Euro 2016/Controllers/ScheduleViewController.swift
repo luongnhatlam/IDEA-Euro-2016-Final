@@ -103,15 +103,15 @@ extension ScheduleViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ScheduleTableViewCell
         let match = self.dataList[indexPath.row]
-        if let logoA = UIImage(named: "\(match.teamA).png") {
+        if let logoA = UIImage(named: "\(match.teamA)") {
             cell.teamALogo.image = logoA
         } else {
-            cell.teamALogo.image = UIImage(named: "logo.png")
+            cell.teamALogo.image = UIImage(named: "logo")
         }
-        if let logoB = UIImage(named: "\(match.teamB).png") {
+        if let logoB = UIImage(named: "\(match.teamB)") {
             cell.teamBLogo.image = logoB
         }else {
-            cell.teamBLogo.image = UIImage(named: "logo.png")
+            cell.teamBLogo.image = UIImage(named: "logo")
         }
         
         
