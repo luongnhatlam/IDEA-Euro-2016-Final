@@ -16,8 +16,6 @@ class ScheduleViewController: UIViewController {
     var dataList:[Match] =  [Match]()
     var matchList:[String: [Match]] = [String: [Match]]()
     
-    //    var sortedKey =
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,14 +39,10 @@ class ScheduleViewController: UIViewController {
     func loadData() {
         self.database.child("Matches").queryOrderedByKey().observeEventType(.Value,withBlock: { (snap) in
             if snap.value != nil {
-                //                print(snap.value)
                 self.dataList.removeAll()
                 if let list = snap.value as? NSArray {
-                    //                    let sortList = list.sort() { $0.0  < $1.0  }
-                    //                    print(list.count)
                     for matchData in list {
                         if !(matchData is NSNull) {
-                            //                            print(groupData)
                             if let data = matchData as? [String:AnyObject] {
                                 if let match:Match = Match(data: data) {
                                     self.dataList.append(match)
@@ -96,18 +90,7 @@ class ScheduleViewController: UIViewController {
         let date = dateFormatter.dateFromString(dateStr)
         return date!
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
 }
 
 extension ScheduleViewController : UITableViewDataSource {
@@ -125,8 +108,6 @@ extension ScheduleViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
-        //let matchesOfDateIndex = self.matchList.startIndex.advancedBy(section)
-        //let dateStr = self.matchList.keys[matchesOfDateIndex]
         let headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 40))
         let bg = UIImageView(frame: headerView.frame)
         bg.image = UIImage(named: "board")
@@ -168,7 +149,7 @@ extension ScheduleViewController : UITableViewDataSource {
             }
             
             
-            cell.dateLabel.text = String.showFormatDate(match.date)
+            cell.dateLabel.text = String.showFormatTime(match.date)
             cell.goalTeamALabel.text = "\(match.goalsTeamA)"
             cell.goalTeamBLabel.text = "\(match.goalsTeamB)"
             cell.tvsLabel.text = match.tvs
