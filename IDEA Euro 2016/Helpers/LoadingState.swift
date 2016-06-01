@@ -36,7 +36,7 @@ class LoadingState {
             })
             
             UIView.addKeyframeWithRelativeStartTime(0.75, relativeDuration: 1, animations: {
-                imgView.center.x = CGRectGetMaxX(viewState.bounds) + 100
+                imgView.center.x = CGRectGetMaxX(viewState.bounds) + width*2
             })
             
             }, completion: nil)

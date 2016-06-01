@@ -15,6 +15,7 @@ class ScheduleViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var dataList:[Match] =  [Match]()
     var matchList:[String: [Match]] = [String: [Match]]()
+    var sortedList:[String] = [String]()
     var loadingState:UIView = UIView()
     
     override func viewDidLoad() {
@@ -60,6 +61,7 @@ class ScheduleViewController: UIViewController {
                     }
                     
                     self.matchList =  self.getDataGroupByDate(self.dataList)
+                    self.sortedList = self.matchList.keys.sort() { self.convertStringToDate($0).timeIntervalSince1970 < self.convertStringToDate($1).timeIntervalSince1970 }
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         self.tableView.reloadData()
@@ -121,9 +123,7 @@ extension ScheduleViewController : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sortedMatchList = self.matchList.keys.sort() { self.convertStringToDate($0).timeIntervalSince1970 < self.convertStringToDate($1).timeIntervalSince1970 }
-        //print(sortedMatchList)
-        let key = sortedMatchList[section]
+        let key = self.sortedList[section]
         return matchList[key]!.count
     }
     
@@ -138,10 +138,7 @@ extension ScheduleViewController : UITableViewDataSource {
         textLabel.font = UIFont(name: "Avenir Next Heavy", size: 25)
         textLabel.textColor = UIColor.whiteColor()
         
-        
-        let sortedMatchList = self.matchList.keys.sort() { self.convertStringToDate($0).timeIntervalSince1970 < self.convertStringToDate($1).timeIntervalSince1970 }
-        //print(sortedMatchList)
-        let key = sortedMatchList[section]
+        let key = self.sortedList[section]
         
         textLabel.text = key
         headerView.addSubview(textLabel)
@@ -151,9 +148,7 @@ extension ScheduleViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellSchedule", forIndexPath: indexPath) as! MatchTableViewCell
         
-        let sortedMatchList = self.matchList.keys.sort() { self.convertStringToDate($0).timeIntervalSince1970 < self.convertStringToDate($1).timeIntervalSince1970 }
-        //print(sortedMatchList)
-        let key = sortedMatchList[indexPath.section]
+        let key = self.sortedList[indexPath.section]
         
         if let matches = self.matchList[key] {
             cell.configureCellWithMatch(matches, indexPath: indexPath)
