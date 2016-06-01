@@ -15,16 +15,21 @@ class ScheduleViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var dataList:[Match] =  [Match]()
     var matchList:[String: [Match]] = [String: [Match]]()
+    var loadingState:UIView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        let nsbundle = NSBundle.mainBundle()
+        let nib = UINib(nibName: "MatchTableViewCell", bundle: nsbundle)
+        tableView.registerNib(nib, forCellReuseIdentifier: "cellSchedule")
         // Do any additional setup after loading the view.
         self.database = FIRDatabase.database().reference()
+        
         loadData()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,6 +42,9 @@ class ScheduleViewController: UIViewController {
     }
     
     func loadData() {
+        loadingState = LoadingState.shareInstance.createLoadingState()
+        tableView.userInteractionEnabled = false
+        self.view.addSubview(loadingState)
         self.database.child("Matches").queryOrderedByKey().observeEventType(.Value,withBlock: { (snap) in
             if snap.value != nil {
                 self.dataList.removeAll()
@@ -55,7 +63,19 @@ class ScheduleViewController: UIViewController {
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         self.tableView.reloadData()
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(UInt64(1) * NSEC_PER_SEC)), dispatch_get_main_queue()) {
+                            
+                            UIView.animateWithDuration(0.25, animations: {
+                                self.loadingState.layer.opacity = 0
+                                }, completion: { (_) in
+                                    self.loadingState.removeFromSuperview()
+                                    self.tableView.userInteractionEnabled = true
+                            })
+                        }
                     })
+                    
+                    
+                    
                 }
             }
         })
@@ -90,7 +110,8 @@ class ScheduleViewController: UIViewController {
         let date = dateFormatter.dateFromString(dateStr)
         return date!
     }
-
+    
+    
 }
 
 extension ScheduleViewController : UITableViewDataSource {
@@ -128,31 +149,14 @@ extension ScheduleViewController : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ScheduleTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellSchedule", forIndexPath: indexPath) as! MatchTableViewCell
         
         let sortedMatchList = self.matchList.keys.sort() { self.convertStringToDate($0).timeIntervalSince1970 < self.convertStringToDate($1).timeIntervalSince1970 }
         //print(sortedMatchList)
         let key = sortedMatchList[indexPath.section]
         
         if let matches = self.matchList[key] {
-            
-            let match = matches[indexPath.row]
-            if let logoA = UIImage(named: "\(match.teamA)") {
-                cell.teamALogo.image = logoA
-            } else {
-                cell.teamALogo.image = UIImage(named: "logo")
-            }
-            if let logoB = UIImage(named: "\(match.teamB)") {
-                cell.teamBLogo.image = logoB
-            }else {
-                cell.teamBLogo.image = UIImage(named: "logo")
-            }
-            
-            
-            cell.dateLabel.text = String.showFormatTime(match.date)
-            cell.goalTeamALabel.text = "\(match.goalsTeamA)"
-            cell.goalTeamBLabel.text = "\(match.goalsTeamB)"
-            cell.tvsLabel.text = match.tvs
+            cell.configureCellWithMatch(matches, indexPath: indexPath)
         }
         
         return cell

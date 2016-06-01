@@ -13,6 +13,9 @@
 		FF44EBB81CFCAA0A0019DEDB /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF44EBB71CFCAA0A0019DEDB /* ScheduleTableViewCell.swift */; };
 		FF44EBBA1CFCAA9C0019DEDB /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF44EBB91CFCAA9C0019DEDB /* ScheduleViewController.swift */; };
 		FF44EBBC1CFCAF8D0019DEDB /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF44EBBB1CFCAF8D0019DEDB /* Match.swift */; };
+		FF55BDB61CFEE01900B9DD6F /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55BDB51CFEE01900B9DD6F /* LoadingState.swift */; };
+		FF55BDBD1CFF0B8D00B9DD6F /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55BDBB1CFF0B8D00B9DD6F /* MatchTableViewCell.swift */; };
+		FF55BDBE1CFF0B8D00B9DD6F /* MatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF55BDBC1CFF0B8D00B9DD6F /* MatchTableViewCell.xib */; };
 		FFBE2AFD1CF6E5AF001BE1C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBE2AFC1CF6E5AF001BE1C2 /* AppDelegate.swift */; };
 		FFBE2B021CF6E5AF001BE1C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBE2B001CF6E5AF001BE1C2 /* Main.storyboard */; };
 		FFBE2B041CF6E5AF001BE1C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBE2B031CF6E5AF001BE1C2 /* Assets.xcassets */; };
@@ -33,6 +36,9 @@
 		FF44EBB71CFCAA0A0019DEDB /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		FF44EBB91CFCAA9C0019DEDB /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		FF44EBBB1CFCAF8D0019DEDB /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		FF55BDB51CFEE01900B9DD6F /* LoadingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		FF55BDBB1CFF0B8D00B9DD6F /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
+		FF55BDBC1CFF0B8D00B9DD6F /* MatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchTableViewCell.xib; sourceTree = "<group>"; };
 		FFBE2AF91CF6E5AF001BE1C2 /* IDEA Euro 2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IDEA Euro 2016.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBE2AFC1CF6E5AF001BE1C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFBE2B011CF6E5AF001BE1C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				FC4A6BAC1CFE7E9C006C87AC /* StringHelper.swift */,
+				FF55BDB51CFEE01900B9DD6F /* LoadingState.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -132,6 +139,8 @@
 		FFC0E9FD1CFC5E74003F75D3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FF55BDBB1CFF0B8D00B9DD6F /* MatchTableViewCell.swift */,
+				FF55BDBC1CFF0B8D00B9DD6F /* MatchTableViewCell.xib */,
 				FFC0E9FE1CFC5E85003F75D3 /* TeamsTableViewCell.swift */,
 				FF44EBB71CFCAA0A0019DEDB /* ScheduleTableViewCell.swift */,
 			);
@@ -208,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF55BDBE1CFF0B8D00B9DD6F /* MatchTableViewCell.xib in Resources */,
 				FFBE2B071CF6E5AF001BE1C2 /* LaunchScreen.storyboard in Resources */,
 				FFBE2B041CF6E5AF001BE1C2 /* Assets.xcassets in Resources */,
 				FFC0EA041CFC6281003F75D3 /* GoogleService-Info.plist in Resources */,
@@ -277,9 +287,11 @@
 				FFC0E9FC1CFC4F94003F75D3 /* TeamsViewController.swift in Sources */,
 				FFC0EA021CFC601F003F75D3 /* Team.swift in Sources */,
 				FF44EBBA1CFCAA9C0019DEDB /* ScheduleViewController.swift in Sources */,
+				FF55BDBD1CFF0B8D00B9DD6F /* MatchTableViewCell.swift in Sources */,
 				FC4A6BAA1CFE777B006C87AC /* TeamDetailsViewController.swift in Sources */,
 				FC4A6BAD1CFE7E9C006C87AC /* StringHelper.swift in Sources */,
 				FFC0E9F21CFC3C90003F75D3 /* SplashViewController.swift in Sources */,
+				FF55BDB61CFEE01900B9DD6F /* LoadingState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

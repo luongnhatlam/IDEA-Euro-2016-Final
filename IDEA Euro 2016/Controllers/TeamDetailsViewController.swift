@@ -15,7 +15,7 @@ class TeamDetailsViewController: UIViewController {
     
     var teamData:Team?
     var matchesList:Array<Match> = [Match]()
-    
+    var loadingState:UIView = UIView()
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -23,10 +23,11 @@ class TeamDetailsViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        
+        let nsbundle = NSBundle.mainBundle()
+        let nib = UINib(nibName: "MatchTableViewCell", bundle: nsbundle)
+        tableView.registerNib(nib, forCellReuseIdentifier: "cellSchedule")
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        
         self.title = teamData?.name
         
         
@@ -43,6 +44,8 @@ class TeamDetailsViewController: UIViewController {
     // MARK: - Load data
     
     func loadData() {
+        loadingState = LoadingState.shareInstance.createLoadingState()
+        self.view.addSubview(loadingState)
         self.database.child("Matches").queryOrderedByKey().observeEventType(.Value,withBlock: { (snap) in
             if snap.value != nil {
                 
@@ -66,6 +69,14 @@ class TeamDetailsViewController: UIViewController {
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         self.tableView.reloadData()
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(UInt64(1) * NSEC_PER_SEC)), dispatch_get_main_queue()) {
+                            
+                            UIView.animateWithDuration(0.25, animations: {
+                                self.loadingState.layer.opacity = 0
+                                }, completion: { (_) in
+                                    self.loadingState.removeFromSuperview()
+                            })
+                        }
                     })
                 }
             }
@@ -93,39 +104,15 @@ extension TeamDetailsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TeamsTableViewCell
             
             if let team = teamData {
-                let banner:UIImage = UIImage(named: "Banner-\(team.name)")!
-                cell.bannerImageView.image = banner
-                
-                let logo:UIImage = UIImage(named: "\(team.name)")!
-                cell.flagImageView.image = logo
-                
-                cell.countryLabel.text = team.name
-                cell.pointLabel.text = "Điểm: \(team.point)"
+                cell.configureCellWithTeam(team)
             }
             
             return cell
         } else {
             
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ScheduleTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MatchTableViewCell
             
-            let match = self.matchesList[indexPath.row]
-            
-            if let logoA = UIImage(named: "\(match.teamA)") {
-                cell.teamALogo.image = logoA
-            } else {
-                cell.teamALogo.image = UIImage(named: "logo")
-            }
-            if let logoB = UIImage(named: "\(match.teamB)") {
-                cell.teamBLogo.image = logoB
-            }else {
-                cell.teamBLogo.image = UIImage(named: "logo")
-            }
-            
-            
-            cell.dateLabel.text = String.showFormatDate(match.date)
-            cell.goalTeamALabel.text = "\(match.goalsTeamA)"
-            cell.goalTeamBLabel.text = "\(match.goalsTeamB)"
-            cell.tvsLabel.text = match.tvs
+            cell.configureCellWithMatch(self.matchesList, indexPath: indexPath)
             
             return cell
         }

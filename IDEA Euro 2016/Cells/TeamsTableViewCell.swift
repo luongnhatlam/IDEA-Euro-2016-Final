@@ -24,5 +24,16 @@ class TeamsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configureCellWithTeam(team: Team) {
+        let banner:UIImage = UIImage(named: "Banner-\(team.name)")!
+        self.bannerImageView.image = banner
+        
+        let logo:UIImage = UIImage(named: "\(team.name)")!
+        self.flagImageView.image = logo
+        
+        self.countryLabel.text = team.name
+        self.pointLabel.text = "Điểm: \(team.point)"
+    }
 
 }

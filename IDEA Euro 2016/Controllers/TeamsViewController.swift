@@ -13,14 +13,14 @@ class TeamsViewController: UIViewController {
     
     var database:FIRDatabaseReference!
     var dataList:[[String:[Team]]] = [[String:[Team]]]()
-    
+    var loadingState:UIView = UIView()
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         self.database = FIRDatabase.database().reference()
-        
+        loadData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -29,15 +29,16 @@ class TeamsViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        loadData()
-        
     }
     
     
     
     func loadData() {
+        loadingState = LoadingState.shareInstance.createLoadingState()
+        self.view.addSubview(loadingState)
+        tableView.userInteractionEnabled = false
         self.database.child("Groups").queryOrderedByKey().observeEventType(.Value,withBlock: { (snap) in
+            
             if snap.value != nil {
                 
                 self.dataList.removeAll()
@@ -67,6 +68,15 @@ class TeamsViewController: UIViewController {
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         self.tableView.reloadData()
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(UInt64(1) * NSEC_PER_SEC)), dispatch_get_main_queue()) {
+                            
+                            UIView.animateWithDuration(0.25, animations: {
+                                self.loadingState.layer.opacity = 0
+                                }, completion: { (_) in
+                                    self.loadingState.removeFromSuperview()
+                                    self.tableView.userInteractionEnabled = true
+                            })
+                        }
                     })
                     
                 }
@@ -142,14 +152,7 @@ extension TeamsViewController : UITableViewDataSource {
             
             let team:Team = teamsArr[indexPath.row]
             
-            let banner:UIImage = UIImage(named: "Banner-\(team.name)")!
-            cell.bannerImageView.image = banner
-            
-            let logo:UIImage = UIImage(named: "\(team.name)")!
-            cell.flagImageView.image = logo
-            
-            cell.countryLabel.text = team.name
-            cell.pointLabel.text = "Điểm: \(team.point)"
+            cell.configureCellWithTeam(team)
         }
         
         return cell

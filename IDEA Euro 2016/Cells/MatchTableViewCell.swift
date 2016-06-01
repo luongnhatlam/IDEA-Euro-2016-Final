@@ -1,14 +1,14 @@
 //
-//  ScheduleTableViewCell.swift
+//  MatchTableViewCell.swift
 //  IDEA Euro 2016
 //
-//  Created by Cuu Long Hoang on 5/31/16.
+//  Created by Cuu Long Hoang on 6/1/16.
 //  Copyright © 2016 Long Hoang. All rights reserved.
 //
 
 import UIKit
 
-class ScheduleTableViewCell: UITableViewCell {
+class MatchTableViewCell: UITableViewCell {
 
     @IBOutlet weak var teamALogo: UIImageView!
     @IBOutlet weak var teamBLogo: UIImageView!
@@ -18,7 +18,6 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var goalTeamBLabel: UILabel!
     @IBOutlet weak var teamALabel: UILabel!
     @IBOutlet weak var teamBLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -52,5 +51,5 @@ class ScheduleTableViewCell: UITableViewCell {
         self.teamALabel.text = match.teamA
         self.teamBLabel.text = match.teamB
     }
-
+    
 }
