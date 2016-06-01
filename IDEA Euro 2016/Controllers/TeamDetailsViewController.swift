@@ -20,9 +20,12 @@ class TeamDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        tableView.delegate = self
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.title = teamData?.name
         
         // Do any additional setup after loading the view.
     }
@@ -102,5 +105,27 @@ extension TeamDetailsViewController: UITableViewDataSource {
         }
         
     }
+}
+
+extension TeamDetailsViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return (section == 0) ? 0 : 40
+    }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        let headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 40))
+        let bg = UIImageView(frame: headerView.frame)
+        bg.image = UIImage(named: "board")
+        bg.contentMode = .ScaleAspectFill
+        headerView.addSubview(bg)
+        let textLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 200, height: 40 ))
+        textLabel.font = UIFont(name: "Avenir Next Heavy", size: 25)
+        textLabel.textColor = UIColor.whiteColor()
+        
+        textLabel.text = "Lịch thi đấu"
+        headerView.addSubview(textLabel)
+        
+        return headerView
+    }
 }

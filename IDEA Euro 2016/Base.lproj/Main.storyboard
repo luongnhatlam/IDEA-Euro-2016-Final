@@ -297,7 +297,9 @@
                             <constraint firstItem="bkg-Qs-hJ4" firstAttribute="leading" secondItem="nyr-FB-LCJ" secondAttribute="leading" id="hgU-J3-ut9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Danh sách đội" id="WtI-2V-y3W"/>
+                    <navigationItem key="navigationItem" title="Danh sách đội" id="WtI-2V-y3W">
+                        <barButtonItem key="backBarButtonItem" title=" " id="4GH-tV-AaQ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="bkg-Qs-hJ4" id="dKc-Pf-obA"/>
                     </connections>
