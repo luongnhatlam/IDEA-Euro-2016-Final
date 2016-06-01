@@ -14,16 +14,16 @@ extension String {
         
         let calendar = NSCalendar.currentCalendar()
         let hour = calendar.component(.Hour,fromDate: date)
-        let day = calendar.component(.Day,fromDate: date)
-        let month = calendar.component(.Month,fromDate: date)
+//        let day = calendar.component(.Day,fromDate: date)
+//        let month = calendar.component(.Month,fromDate: date)
         let minute = calendar.component(.Minute, fromDate: date)
         
         let hourStr = hour < 10 ? "0\(hour)" : "\(hour)"
-        let dayStr = day < 10 ? "0\(day)" : "\(day)"
-        let monthStr = month < 10 ? "0\(month)" : "\(month)"
+//        let dayStr = day < 10 ? "0\(day)" : "\(day)"
+//        let monthStr = month < 10 ? "0\(month)" : "\(month)"
         let minuteStr = minute < 10 ? "0\(minute)" : "\(minute)"
         
-        let dateStr:String = "\(dayStr)/\(monthStr) - \(hourStr):\(minuteStr)"
+        let dateStr:String = "\(hourStr):\(minuteStr)"
         return dateStr
     }
     

@@ -70,29 +70,6 @@ class TeamDetailsViewController: UIViewController {
                 }
             }
         })
-        
-        
-    }
-    
-    func getDataGroupByDate(data:[Match]) -> [String: [Match]] {
-        
-        var result:Dictionary<String,[Match]> = [String: [Match]]()
-        
-        for match in data {
-            let dateStr = String.convertNSDateToDDMMYYYY(match.date)
-            
-            if let matchesOfDate = result[dateStr] {
-                
-                var matches = matchesOfDate
-                matches.append(match)
-                result[dateStr] = matches
-                
-            } else {
-                result[dateStr] = [match]
-            }
-        }
-        
-        return result
     }
     
 
