@@ -15,6 +15,7 @@ class ScheduleViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var dataList:[Match] =  [Match]()
     var matchList:[[String:[Match]]] = [[String:[Match]]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
