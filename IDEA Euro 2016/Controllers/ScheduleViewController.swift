@@ -67,13 +67,15 @@ class ScheduleViewController: UIViewController {
     }
     
     func getDataGroupByDate(data:[Match]) -> [String: [Match]] {
+        
         var result:Dictionary<String,[Match]> = [String: [Match]]()
         
         for match in data {
             let dateStr = convertNSDateToDDMMYYYY(match.date)
-            if let matchesOfDate = result[dateStr] as? AnyObject {
+            
+            if let matchesOfDate = result[dateStr] {
                 
-                var matches = matchesOfDate as! [Match]
+                var matches = matchesOfDate
                 matches.append(match)
                 result[dateStr] = matches
                 
