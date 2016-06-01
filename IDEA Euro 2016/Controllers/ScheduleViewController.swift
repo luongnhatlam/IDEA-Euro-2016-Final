@@ -71,7 +71,7 @@ class ScheduleViewController: UIViewController {
         var result:Dictionary<String,[Match]> = [String: [Match]]()
         
         for match in data {
-            let dateStr = convertNSDateToDDMMYYYY(match.date)
+            let dateStr = String.convertNSDateToDDMMYYYY(match.date)
             
             if let matchesOfDate = result[dateStr] {
                 
@@ -85,16 +85,6 @@ class ScheduleViewController: UIViewController {
         }
         
         return result
-    }
-    
-    func convertNSDateToDDMMYYYY(date: NSDate) -> String {
-        let calendar = NSCalendar.currentCalendar()
-        let day = calendar.component(.Day,fromDate: date)
-        let month = calendar.component(.Month,fromDate: date)
-        let year = calendar.component(.Year, fromDate: date)
-        let dayStr = day < 10 ? "0\(day)" : "\(day)"
-        let monthStr = month < 10 ? "0\(month)" : "\(month)"
-        return "\(dayStr)/\(monthStr)/\(year)"
     }
 
     /*
@@ -129,7 +119,7 @@ extension ScheduleViewController : UITableViewDataSource {
         }
         
         
-        cell.dateLabel.text = showFormatDate(match.date)
+        cell.dateLabel.text = String.showFormatDate(match.date)
         cell.goalTeamALabel.text = "\(match.goalsTeamA)"
         cell.goalTeamBLabel.text = "\(match.goalsTeamB)"
         cell.tvsLabel.text = match.tvs
@@ -142,23 +132,6 @@ extension ScheduleViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.0001
-    }
-    
-    func showFormatDate(date:NSDate) -> String {
-        
-        let calendar = NSCalendar.currentCalendar()
-        let hour = calendar.component(.Hour,fromDate: date)
-        let day = calendar.component(.Day,fromDate: date)
-        let month = calendar.component(.Month,fromDate: date)
-        let minute = calendar.component(.Minute, fromDate: date)
-        
-        let hourStr = hour < 10 ? "0\(hour)" : "\(hour)"
-        let dayStr = day < 10 ? "0\(day)" : "\(day)"
-        let monthStr = month < 10 ? "0\(month)" : "\(month)"
-        let minuteStr = minute < 10 ? "0\(minute)" : "\(minute)"
-        
-        let dateStr:String = "\(dayStr)/\(monthStr) - \(hourStr):\(minuteStr)"
-        return dateStr
     }
 }
 

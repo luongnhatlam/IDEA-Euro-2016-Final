@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9AD47EDDB16123E29E82D72A /* Pods_IDEA_Euro_2016.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2AF8FD859627161CC289464 /* Pods_IDEA_Euro_2016.framework */; };
+		FC4A6BAA1CFE777B006C87AC /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4A6BA91CFE777B006C87AC /* TeamDetailsViewController.swift */; };
+		FC4A6BAD1CFE7E9C006C87AC /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4A6BAC1CFE7E9C006C87AC /* StringHelper.swift */; };
 		FF44EBB81CFCAA0A0019DEDB /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF44EBB71CFCAA0A0019DEDB /* ScheduleTableViewCell.swift */; };
 		FF44EBBA1CFCAA9C0019DEDB /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF44EBB91CFCAA9C0019DEDB /* ScheduleViewController.swift */; };
 		FF44EBBC1CFCAF8D0019DEDB /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF44EBBB1CFCAF8D0019DEDB /* Match.swift */; };
@@ -26,6 +28,8 @@
 		1006B649AA531C56F803EA6F /* Pods-IDEA Euro 2016.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDEA Euro 2016.release.xcconfig"; path = "Pods/Target Support Files/Pods-IDEA Euro 2016/Pods-IDEA Euro 2016.release.xcconfig"; sourceTree = "<group>"; };
 		A2AF8FD859627161CC289464 /* Pods_IDEA_Euro_2016.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IDEA_Euro_2016.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46520088895ED5876DC9F97 /* Pods-IDEA Euro 2016.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDEA Euro 2016.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IDEA Euro 2016/Pods-IDEA Euro 2016.debug.xcconfig"; sourceTree = "<group>"; };
+		FC4A6BA91CFE777B006C87AC /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
+		FC4A6BAC1CFE7E9C006C87AC /* StringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		FF44EBB71CFCAA0A0019DEDB /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		FF44EBB91CFCAA9C0019DEDB /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		FF44EBBB1CFCAF8D0019DEDB /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
@@ -71,6 +75,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FC4A6BAB1CFE7E7A006C87AC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FC4A6BAC1CFE7E9C006C87AC /* StringHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		FFBE2AF01CF6E5AF001BE1C2 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +104,7 @@
 		FFBE2AFB1CF6E5AF001BE1C2 /* IDEA Euro 2016 */ = {
 			isa = PBXGroup;
 			children = (
+				FC4A6BAB1CFE7E7A006C87AC /* Helpers */,
 				FFC0EA031CFC6281003F75D3 /* GoogleService-Info.plist */,
 				FFC0EA001CFC600A003F75D3 /* Models */,
 				FFC0E9FD1CFC5E74003F75D3 /* Cells */,
@@ -111,6 +124,7 @@
 				FFC0E9F11CFC3C90003F75D3 /* SplashViewController.swift */,
 				FFC0E9FB1CFC4F94003F75D3 /* TeamsViewController.swift */,
 				FF44EBB91CFCAA9C0019DEDB /* ScheduleViewController.swift */,
+				FC4A6BA91CFE777B006C87AC /* TeamDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -263,6 +277,8 @@
 				FFC0E9FC1CFC4F94003F75D3 /* TeamsViewController.swift in Sources */,
 				FFC0EA021CFC601F003F75D3 /* Team.swift in Sources */,
 				FF44EBBA1CFCAA9C0019DEDB /* ScheduleViewController.swift in Sources */,
+				FC4A6BAA1CFE777B006C87AC /* TeamDetailsViewController.swift in Sources */,
+				FC4A6BAD1CFE7E9C006C87AC /* StringHelper.swift in Sources */,
 				FFC0E9F21CFC3C90003F75D3 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

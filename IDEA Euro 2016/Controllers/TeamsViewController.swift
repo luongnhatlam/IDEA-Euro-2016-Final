@@ -134,6 +134,7 @@ extension TeamsViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TeamsTableViewCell
+        
         let group = self.dataList[indexPath.section]
         
         for (_, teams) in group {
@@ -182,5 +183,26 @@ extension TeamsViewController : UITableViewDataSource {
 }
 
 extension TeamsViewController : UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let group = self.dataList[indexPath.section]
+        
+        for (_, teams) in group {
+            var teamsArr = teams.sort() { $0.point > $1.point }
+            
+            let team:Team = teamsArr[indexPath.row]
+            
+            if let teamDetailsVC = self.storyboard?.instantiateViewControllerWithIdentifier("teamDetailVC") as? TeamDetailsViewController {
+                
+                teamDetailsVC.teamData = team
+                self.navigationController?.pushViewController(teamDetailsVC, animated: true)
+            }
+            
+            break
+        }
+
+        
+    }
     
 }
