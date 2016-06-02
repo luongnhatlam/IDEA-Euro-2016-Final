@@ -17,10 +17,12 @@ class ScheduleViewController: UIViewController {
     var matchList:[String: [Match]] = [String: [Match]]()
     var sortedList:[String] = [String]()
     var loadingState:UIView = UIView()
-    
+//    var searchController : UISearchController!
+
+    @IBOutlet weak var OLSearch: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        createSearchBar()
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         let nsbundle = NSBundle.mainBundle()
@@ -32,6 +34,20 @@ class ScheduleViewController: UIViewController {
         loadData()
         
     }
+    
+//    func createSearchBar() {
+//        self.searchController = UISearchController(searchResultsController:  nil)
+//        
+//        self.searchController!.searchResultsUpdater = self
+//        self.searchController!.delegate = self
+//        self.searchController!.searchBar.delegate = self
+//        
+//        self.searchController!.hidesNavigationBarDuringPresentation = false
+//        self.searchController!.dimsBackgroundDuringPresentation = true
+//        
+//        self.navigationItem.titleView = searchController!.searchBar
+//        self.definesPresentationContext = true
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,7 +129,13 @@ class ScheduleViewController: UIViewController {
         return date!
     }
     
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
+    }
     
+    @IBAction func search(sender: AnyObject) {
+        
+    }
 }
 
 extension ScheduleViewController : UITableViewDataSource {

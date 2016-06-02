@@ -14,6 +14,9 @@ class TeamDetailsViewController: UIViewController {
     var database:FIRDatabaseReference!
     
     var teamData:Team?
+    
+    var searchController : UISearchController?
+    
     var matchesList:Array<Match> = [Match]()
     var loadingState:UIView = UIView()
     @IBOutlet weak var tableView: UITableView!
@@ -142,3 +145,4 @@ extension TeamDetailsViewController: UITableViewDelegate {
         return headerView
     }
 }
+

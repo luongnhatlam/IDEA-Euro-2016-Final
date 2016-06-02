@@ -55,7 +55,9 @@ class TeamsViewController: UIViewController {
                                 
                                 guard let teamPoint = teamInfo["Point"] as? Int else { continue }
                                 
-                                let team = Team(name: teamName, point: teamPoint)
+                                guard let teamRank = teamInfo["Rank"] as? Int else { continue }
+                                
+                                let team = Team(name: teamName, point: teamPoint, rank: teamRank )
                                 teamList.append(team)
                             }
                         }
@@ -148,7 +150,7 @@ extension TeamsViewController : UITableViewDataSource {
         let group = self.dataList[indexPath.section]
         
         for (_, teams) in group {
-            var teamsArr = teams.sort() { $0.point > $1.point }
+            var teamsArr = teams.sort() { $0.rank < $1.rank }
             
             let team:Team = teamsArr[indexPath.row]
             
