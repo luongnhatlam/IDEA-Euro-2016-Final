@@ -9,7 +9,7 @@
 import UIKit
 
 class MatchTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var teamALogo: UIImageView!
     @IBOutlet weak var teamBLogo: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -22,10 +22,10 @@ class MatchTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -42,7 +42,6 @@ class MatchTableViewCell: UITableViewCell {
         }else {
             self.teamBLogo.image = UIImage(named: "logo")
         }
-        
         
         self.dateLabel.text = String.showFormatTime(match.date)
         self.goalTeamALabel.text = "\(match.goalsTeamA)"

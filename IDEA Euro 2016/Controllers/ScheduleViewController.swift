@@ -17,12 +17,11 @@ class ScheduleViewController: UIViewController {
     var matchList:[String: [Match]] = [String: [Match]]()
     var sortedList:[String] = [String]()
     var loadingState:UIView = UIView()
-//    var searchController : UISearchController!
-
+    
     @IBOutlet weak var OLSearch: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        createSearchBar()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScheduleViewController.createNotificationMatches), name: "alertMatch", object: nil)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         let nsbundle = NSBundle.mainBundle()
@@ -34,20 +33,6 @@ class ScheduleViewController: UIViewController {
         loadData()
         
     }
-    
-//    func createSearchBar() {
-//        self.searchController = UISearchController(searchResultsController:  nil)
-//        
-//        self.searchController!.searchResultsUpdater = self
-//        self.searchController!.delegate = self
-//        self.searchController!.searchBar.delegate = self
-//        
-//        self.searchController!.hidesNavigationBarDuringPresentation = false
-//        self.searchController!.dimsBackgroundDuringPresentation = true
-//        
-//        self.navigationItem.titleView = searchController!.searchBar
-//        self.definesPresentationContext = true
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,6 +66,7 @@ class ScheduleViewController: UIViewController {
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         self.tableView.reloadData()
+                        
                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(UInt64(1) * NSEC_PER_SEC)), dispatch_get_main_queue()) {
                             
                             UIView.animateWithDuration(0.25, animations: {
@@ -133,9 +119,34 @@ class ScheduleViewController: UIViewController {
         
     }
     
-    @IBAction func search(sender: AnyObject) {
-        
+    func createNotificationMatches() {
+        let calendar: NSCalendar = NSCalendar.currentCalendar()
+        if NSUserDefaults.standardUserDefaults().objectForKey("firstLoad") == nil {
+            for match in self.dataList {
+                let now = getGMT7(NSDate())
+                if now.compare(getGMT7(match.date)) == .OrderedAscending {
+                    let dateFire:NSDate = calendar.dateByAddingUnit(.Second, value: -10, toDate: match.date, options: [] )!
+                    
+                    let localNotification = UILocalNotification()
+                    localNotification.fireDate = dateFire
+                    localNotification.alertBody = "Trận đấu giữa \(match.teamA) và \(match.teamB) sẽ bắt đầu sau 4h nữa."
+                    localNotification.userInfo = ["notification": "Trận đấu giữa \(match.teamA) và \(match.teamB) sẽ bắt đầu sau 4h nữa."]
+                    localNotification.applicationIconBadgeNumber = 1
+                    localNotification.soundName = UILocalNotificationDefaultSoundName
+                    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                }
+            }
+            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstLoad")
+        }
     }
+    
+    
+    func getGMT7(date: NSDate) -> NSDate {
+        let tz = NSTimeZone.localTimeZone()
+        let seconds:Double = Double(tz.secondsFromGMTForDate(date))
+        return NSDate(timeInterval: seconds, sinceDate: date)
+    }
+    
 }
 
 extension ScheduleViewController : UITableViewDataSource {
@@ -157,7 +168,8 @@ extension ScheduleViewController : UITableViewDataSource {
         bg.contentMode = .ScaleAspectFill
         headerView.addSubview(bg)
         let textLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 200, height: 40 ))
-        textLabel.font = UIFont(name: "Avenir Next Heavy", size: 25)
+        textLabel.font = UIFont.init(name: "Avenir Next Heavy", size: 25)
+        
         textLabel.textColor = UIColor.whiteColor()
         
         let key = self.sortedList[section]
