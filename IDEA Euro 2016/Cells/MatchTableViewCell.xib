@@ -81,26 +81,34 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="3ud-DB-6gq" secondAttribute="bottom" constant="27" id="1TW-cB-rpC"/>
                     <constraint firstAttribute="trailing" secondItem="s5A-o1-NpH" secondAttribute="trailing" constant="8" id="4CI-Lq-G8y"/>
                     <constraint firstItem="dXU-k7-WqO" firstAttribute="leading" secondItem="3ud-DB-6gq" secondAttribute="leading" id="4vt-zF-m77"/>
                     <constraint firstItem="3ud-DB-6gq" firstAttribute="leading" secondItem="6Bv-DC-ByY" secondAttribute="leading" constant="8" id="6gW-9W-kt9"/>
                     <constraint firstItem="veA-pw-db3" firstAttribute="centerX" secondItem="6Bv-DC-ByY" secondAttribute="centerX" id="6rc-oq-ZBG"/>
                     <constraint firstItem="sKp-tM-GGM" firstAttribute="centerY" secondItem="WZ2-hy-Smi" secondAttribute="centerY" id="FUF-8q-18Q"/>
                     <constraint firstItem="A20-iS-HfS" firstAttribute="top" secondItem="s5A-o1-NpH" secondAttribute="bottom" constant="5" id="IC9-0w-oGC"/>
+                    <constraint firstItem="dXU-k7-WqO" firstAttribute="top" secondItem="3ud-DB-6gq" secondAttribute="bottom" constant="5" id="KnK-DB-tc2"/>
                     <constraint firstItem="WZ2-hy-Smi" firstAttribute="centerY" secondItem="6Bv-DC-ByY" secondAttribute="centerY" id="LQR-L8-dVY"/>
                     <constraint firstItem="WZ2-hy-Smi" firstAttribute="leading" secondItem="176-74-900" secondAttribute="trailing" constant="16" id="SIs-Qc-beM"/>
                     <constraint firstItem="sKp-tM-GGM" firstAttribute="leading" secondItem="WZ2-hy-Smi" secondAttribute="trailing" constant="16" id="XHH-Dt-dz7"/>
                     <constraint firstItem="s5A-o1-NpH" firstAttribute="top" secondItem="6Bv-DC-ByY" secondAttribute="top" constant="8" id="Ylp-LG-CTQ"/>
                     <constraint firstAttribute="bottom" secondItem="veA-pw-db3" secondAttribute="bottom" constant="5" id="cou-Mm-Sgy"/>
                     <constraint firstItem="176-74-900" firstAttribute="centerY" secondItem="WZ2-hy-Smi" secondAttribute="centerY" id="eoK-OY-7sM"/>
+                    <constraint firstAttribute="bottom" secondItem="A20-iS-HfS" secondAttribute="bottom" constant="7" id="fGN-wA-h71"/>
                     <constraint firstItem="A20-iS-HfS" firstAttribute="trailing" secondItem="s5A-o1-NpH" secondAttribute="trailing" id="gDn-l1-UwB"/>
                     <constraint firstItem="3ud-DB-6gq" firstAttribute="top" secondItem="6Bv-DC-ByY" secondAttribute="top" constant="8" id="gps-of-kEx"/>
                     <constraint firstItem="Npw-Zy-2XP" firstAttribute="centerX" secondItem="6Bv-DC-ByY" secondAttribute="centerX" id="pCd-ab-SwO"/>
+                    <constraint firstAttribute="bottom" secondItem="dXU-k7-WqO" secondAttribute="bottom" constant="7" id="q34-OH-T6u"/>
                     <constraint firstItem="WZ2-hy-Smi" firstAttribute="centerX" secondItem="6Bv-DC-ByY" secondAttribute="centerX" id="uSL-nr-3Jh"/>
                     <constraint firstItem="dXU-k7-WqO" firstAttribute="top" secondItem="3ud-DB-6gq" secondAttribute="bottom" constant="5" id="wa4-2M-dew"/>
                     <constraint firstItem="Npw-Zy-2XP" firstAttribute="top" secondItem="6Bv-DC-ByY" secondAttribute="top" constant="5" id="xoK-Zx-AF2"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="wa4-2M-dew"/>
+                        <exclude reference="IC9-0w-oGC"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateLabel" destination="Npw-Zy-2XP" id="2lA-6y-8Dx"/>
