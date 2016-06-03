@@ -91,14 +91,14 @@ class TeamsViewController: UIViewController {
             if snap.value != nil {
                 if let list = snap.value as? [String:AnyObject] {
                     let sortList = list.sort() { $0.0  < $1.0  }
-                    for groupData in sortList {
-                        if let teamsData = groupData.1 as? [String:AnyObject] {
+                    for (groupName,teams) in sortList {
+                        if let teamsData = teams as? [String:AnyObject] {
                             var teamList:[Team] = [Team]()
-                            for teamData in teamsData {
+                            for (teamName,teamInfoData) in teamsData {
                                 var data:[String:AnyObject] = [
-                                    "name" : teamData.0
+                                    "name" : teamName
                                 ]
-                                if let teamInfo = teamData.1 as? [String:AnyObject] {
+                                if let teamInfo = teamInfoData as? [String:AnyObject] {
                                     data["point"] = teamInfo["Point"]
                                     data["rank"] = teamInfo["Rank"]
                                 }
@@ -107,7 +107,7 @@ class TeamsViewController: UIViewController {
                                 }
                             }
                             if teamList.count > 0 {
-                                let group = [groupData.0:teamList]
+                                let group = [groupName:teamList]
                                 self.dataList.append(group)
                             }
                             
