@@ -27,7 +27,6 @@ class LoadingState {
         viewState.layer.cornerRadius = 10
         viewState.addSubview(imgView)
         viewState.clipsToBounds = true
-        viewState.tag = 99999
         
         UIView.animateKeyframesWithDuration(2, delay: 0, options: [ .Repeat, .CalculationModeLinear ] , animations: {
             
@@ -41,10 +40,6 @@ class LoadingState {
             
             }, completion: nil)
         return viewState
-    }
-    
-    func getLoadingTag() -> Int {
-        return 999999
     }
 
 }
