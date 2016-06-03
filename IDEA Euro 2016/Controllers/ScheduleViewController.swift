@@ -121,23 +121,32 @@ class ScheduleViewController: UIViewController {
     
     func createNotificationMatches() {
         let calendar: NSCalendar = NSCalendar.currentCalendar()
-        if NSUserDefaults.standardUserDefaults().objectForKey("firstLoad") == nil {
-            for match in self.dataList {
-                let now = getGMT7(NSDate())
-                if now.compare(getGMT7(match.date)) == .OrderedAscending {
-                    let dateFire:NSDate = calendar.dateByAddingUnit(.Second, value: -10, toDate: match.date, options: [] )!
-                    
-                    let localNotification = UILocalNotification()
-                    localNotification.fireDate = dateFire
-                    localNotification.alertBody = "Trận đấu giữa \(match.teamA) và \(match.teamB) sẽ bắt đầu sau 4h nữa."
-                    localNotification.userInfo = ["notification": "Trận đấu giữa \(match.teamA) và \(match.teamB) sẽ bắt đầu sau 4h nữa."]
-                    localNotification.applicationIconBadgeNumber = 1
-                    localNotification.soundName = UILocalNotificationDefaultSoundName
-                    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-                }
+        UIApplication.sharedApplication().scheduledLocalNotifications?.removeAll()
+        for match in self.dataList {
+            let now = getGMT7(NSDate())
+            if now.compare(getGMT7(match.date)) == .OrderedAscending {
+                var dateFire:NSDate = calendar.dateByAddingUnit(.Hour, value: -4, toDate: match.date, options: [] )!
+                
+                var localNotification = UILocalNotification()
+                localNotification.fireDate = dateFire
+                localNotification.alertBody = "Trận đấu giữa \(match.teamA) và \(match.teamB) sẽ bắt đầu sau 4h nữa."
+                localNotification.userInfo = ["notification": "Trận đấu giữa \(match.teamA) và \(match.teamB) sẽ bắt đầu sau 4h nữa."]
+                localNotification.applicationIconBadgeNumber = 1
+                localNotification.soundName = UILocalNotificationDefaultSoundName
+                UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                
+                dateFire = calendar.dateByAddingUnit(.Minute, value: -15, toDate: match.date, options: [] )!
+                
+                localNotification = UILocalNotification()
+                localNotification.fireDate = dateFire
+                localNotification.alertBody = "Trận đấu giữa \(match.teamA) và \(match.teamB) sẽ bắt đầu sau 15p nữa."
+                localNotification.userInfo = ["notification": "Trận đấu giữa \(match.teamA) và \(match.teamB) sẽ bắt đầu sau 15p nữa."]
+                localNotification.applicationIconBadgeNumber = 1
+                localNotification.soundName = UILocalNotificationDefaultSoundName
+                UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
             }
-            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstLoad")
         }
+        print(UIApplication.sharedApplication().scheduledLocalNotifications)
     }
     
     
